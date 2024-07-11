@@ -1,3 +1,1 @@
-блог новостей
-
-- [тык](https://123-ten-nu.vercel.app)
+[тык](https://123-ten-nu.vercel.app)
