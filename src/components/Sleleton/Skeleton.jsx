@@ -1,9 +1,13 @@
 import styles from "./styles.module.css";
-export function Skeleton({ count = 1, type = "banner" }) {
+export function Skeleton({ count = 1, type = "banner", direction = "culumn" }) {
   return (
     <>
       {count > 1 ? (
-        <ul className={styles.list}>
+        <ul
+          className={
+            direction === "column" ? styles.columnList : styles.rowList
+          }
+        >
           {[...Array(count)].map((_, index) => (
             <li
               key={index}
