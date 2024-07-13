@@ -6,6 +6,12 @@ export function Categories({
 }) {
   return (
     <div className={styles.categories}>
+      <button
+        onClick={() => setSelectedCategory(null)}
+        className={!selectedCategoty ? styles.active : styles.item}
+      >
+        all
+      </button>
       {categories.map((category) => {
         return (
           <button
