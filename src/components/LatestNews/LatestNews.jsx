@@ -1,9 +1,15 @@
 import styles from "./styles.module.css";
 import { BannersListWithSkeleton } from "../BannersList/BannersList";
-export function LatestNews({ banners, isLoading }) {
+import { useFetch } from "../../helpers/hooks/useFetch";
+import { getLatestNews } from "../../api/apiNews";
+export function LatestNews() {
+  const { data, isLoading } = useFetch(getLatestNews);
   return (
     <section className={styles.section}>
-      <BannersListWithSkeleton banners={banners} isLoading={isLoading} />
+      <BannersListWithSkeleton
+        banners={data && data.news}
+        isLoading={isLoading}
+      />
     </section>
   );
 }
