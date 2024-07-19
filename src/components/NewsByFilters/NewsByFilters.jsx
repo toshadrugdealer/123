@@ -1,10 +1,28 @@
-import { TOTAL_PAGES } from "../../constants/constanst";
+import { getNews } from "../../api/apiNews";
+import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constanst";
+import { useDebounce } from "../../helpers/hooks/useDebounce";
+import { useFetch } from "../../helpers/hooks/useFetch";
+import { useFilters } from "../../helpers/hooks/useFilters";
 import { NewsFilters } from "../NewsFilters/NewsFilters";
 import { NewsListWithSkeleton } from "../NewsList/NewsList";
 import { Pagination } from "../Pagination/Pagination";
 import styles from "./styles.module.css";
 
-export function NewsByFilters({ filters, changeFilter, isLoading, news }) {
+export function NewsByFilters() {
+  const { filters, changeFilter } = useFilters({
+    page_number: 1,
+    page_size: PAGE_SIZE,
+    category: null,
+    keywords: "",
+  });
+
+  const debouncedKeywords = useDebounce(filters.keywords, 1000);
+
+  const { data, isLoading } = useFetch(getNews, {
+    ...filters,
+    keywords: debouncedKeywords,
+  });
+
   const handleNextPage = () => {
     if (filters.page_number < TOTAL_PAGES) {
       changeFilter("page_number", filters.page_number + 1);
@@ -32,7 +50,7 @@ export function NewsByFilters({ filters, changeFilter, isLoading, news }) {
         currentPage={filters.page_number}
       />
 
-      <NewsListWithSkeleton isLoading={isLoading} news={news} />
+      <NewsListWithSkeleton isLoading={isLoading} news={data?.news} />
 
       <Pagination
         handleNextPage={handleNextPage}
