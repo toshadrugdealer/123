@@ -5,7 +5,7 @@ import { useFetch } from "../../helpers/hooks/useFetch";
 import { useFilters } from "../../helpers/hooks/useFilters";
 import { NewsFilters } from "../NewsFilters/NewsFilters";
 import { NewsListWithSkeleton } from "../NewsList/NewsList";
-import { Pagination } from "../Pagination/Pagination";
+import { PaginationWrapper } from "../PaginationWrapper/PaginationWrapper";
 import styles from "./styles.module.css";
 
 export function NewsByFilters() {
@@ -41,24 +41,17 @@ export function NewsByFilters() {
   return (
     <section className={styles.section}>
       <NewsFilters changeFilter={changeFilter} filters={filters} />
-
-      <Pagination
+      <PaginationWrapper
+        top
+        bottom
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
         handlePageClick={handlePageClick}
         totalPages={TOTAL_PAGES}
         currentPage={filters.page_number}
-      />
-
-      <NewsListWithSkeleton isLoading={isLoading} news={data?.news} />
-
-      <Pagination
-        handleNextPage={handleNextPage}
-        handlePreviousPage={handlePreviousPage}
-        handlePageClick={handlePageClick}
-        totalPages={TOTAL_PAGES}
-        currentPage={filters.page_number}
-      />
+      >
+        <NewsListWithSkeleton isLoading={isLoading} news={data?.news} />
+      </PaginationWrapper>
     </section>
   );
 }
