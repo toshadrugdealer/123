@@ -1,11 +1,13 @@
+import { IPaginationProps } from "../../interfaces";
 import styles from "./styles.module.css";
+
 export function Pagination({
   totalPages,
   handleNextPage,
   handlePreviousPage,
   handlePageClick,
   currentPage,
-}) {
+}: IPaginationProps) {
   return (
     <div className={styles.pagination}>
       <button
