@@ -1,7 +1,12 @@
 import { formatDateAgo } from "../../helpers/formatTimeAgo";
 import styles from "./styles.module.css";
 import noLogo from "./../../assets/noLogo.png";
-export function NewsItem({ item }) {
+import { INews } from "../../interfaces";
+
+interface Props {
+  item: INews;
+}
+export function NewsItem({ item }: Props) {
   return (
     <li className={styles.item}>
       <div

@@ -1,8 +1,12 @@
-import styles from "./styles.module.css";
 import { withSkeleton } from "../../helpers/hock/withSkeleton";
+import { INews } from "../../interfaces";
 import { NewsBanner } from "../NewsBanner/NewsBanner";
+import styles from "./styles.module.css";
+interface Props {
+  banners?: INews[] | null;
+}
 
-function BannersList({ banners }) {
+function BannersList({ banners }: Props) {
   return (
     <ul className={styles.banners}>
       {banners?.map((banner) => {
@@ -11,7 +15,7 @@ function BannersList({ banners }) {
     </ul>
   );
 }
-export const BannersListWithSkeleton = withSkeleton(
+export const BannersListWithSkeleton = withSkeleton<Props>(
   BannersList,
   "banner",
   10,
