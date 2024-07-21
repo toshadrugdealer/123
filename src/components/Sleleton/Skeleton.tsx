@@ -1,3 +1,4 @@
+import { useTheme } from "../../context/ThemeContext";
 import { DirectionType, SkeletonType } from "../../interfaces";
 import styles from "./styles.module.css";
 
@@ -11,6 +12,7 @@ export function Skeleton({
   type = "banner",
   direction = "column",
 }: Props) {
+  const { isDark } = useTheme();
   return (
     <>
       {count > 1 ? (
@@ -22,12 +24,18 @@ export function Skeleton({
           {[...Array(count)].map((_, index) => (
             <li
               key={index}
-              className={type === "banner" ? styles.banner : styles.item}
+              className={`${type === "banner" ? styles.banner : styles.item} ${
+                isDark ? styles.dark : styles.light
+              }`}
             ></li>
           ))}
         </ul>
       ) : (
-        <li className={type === "banner" ? styles.banner : styles.item}></li>
+        <li
+          className={`${type === "banner" ? styles.banner : styles.item} ${
+            isDark ? styles.dark : styles.light
+          }`}
+        ></li>
       )}
     </>
   );

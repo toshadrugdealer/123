@@ -1,10 +1,12 @@
+import { useTheme } from "../../context/ThemeContext";
 import styles from "./styles.module.css";
 interface Props {
   image: string;
 }
 export function Image({ image }: Props) {
+  const { isDark } = useTheme();
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${isDark ? styles.dark : styles.light}`}>
       {image ? (
         <img
           src={image}

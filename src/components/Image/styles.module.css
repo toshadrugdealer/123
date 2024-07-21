@@ -15,3 +15,9 @@
   object-fit: cover;
   border-radius: 10px;
 }
+.wrapper.light {
+  background-color: #f2f4f5;
+}
+.wrapper.dark {
+  background-color: #2f343d;
+}
