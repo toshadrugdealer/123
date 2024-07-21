@@ -2,15 +2,17 @@ import { formatDateAgo } from "../../helpers/formatTimeAgo";
 import styles from "./styles.module.css";
 import noLogo from "./../../assets/noLogo.png";
 import { INews } from "../../interfaces";
+import { useTheme } from "../../context/ThemeContext";
 
 interface Props {
   item: INews;
 }
 export function NewsItem({ item }: Props) {
+  const { isDark } = useTheme();
   return (
     <li className={styles.item}>
       <div
-        className={styles.wrapper}
+        className={`${styles.wrapper} ${isDark ? styles.dark : styles.light}`}
         style={{
           backgroundImage: `url(${
             item.image === "None" ? noLogo : item.image

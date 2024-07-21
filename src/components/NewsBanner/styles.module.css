@@ -11,3 +11,9 @@
   font-size: 12px;
   color: #6c7072;
 }
+.banner.light {
+  background-color: #f2f4f5;
+}
+.banner.dark {
+  background-color: #2f343d;
+}

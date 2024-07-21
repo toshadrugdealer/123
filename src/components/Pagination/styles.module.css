@@ -11,7 +11,6 @@
 .pageNumber,
 .arrow {
   border: none;
-  background-color: white;
   cursor: pointer;
 }
 .pageNumber:disabled,
@@ -22,4 +21,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pagination.dark .pageNumber,
+.pagination.dark .arrow {
+  background-color: #23272f;
+  color: white;
+}
+.pagination.dark .pageNumber:disabled,
+.pagination.dark .arrow:disabled {
+  color: rgb(95, 94, 94);
+}
+.pagination.light .pageNumber,
+.pagination.light .arrow {
+  background-color: white;
+  color: black;
+}
+.pagination.light .pageNumber:disabled,
+.pagination.light .arrow:disabled {
+  color: rgb(186, 186, 186);
 }

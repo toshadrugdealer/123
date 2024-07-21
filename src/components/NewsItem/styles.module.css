@@ -18,9 +18,15 @@
 .wrapper {
   width: 64px;
   height: 64px;
-  background-color: #f2f4f5;
+
   background-position: center;
   background-size: cover;
   flex-shrink: 0;
   border-radius: 10px;
+}
+.wrapper.light {
+  background-color: #f2f4f5;
+}
+.wrapper.dark {
+  background-color: #2f343d;
 }
