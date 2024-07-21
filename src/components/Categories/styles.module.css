@@ -8,18 +8,33 @@
   white-space: nowrap;
   scrollbar-width: none;
 }
-.item,
-.active {
+.item.light,
+.active.light {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 32px;
+  background-color: transparent;
+  border: 2px solid #f2f4f5;
+}
+.active.light {
+  background-color: #e7e7ff;
+  color: #6b4eff;
+}
+.item.dark,
+.active.dark {
   display: flex;
   align-items: center;
   padding: 8px 16px;
   border: none;
   border-radius: 32px;
-  background-color: #f2f4f5;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #353942;
 }
-.active {
-  background-color: #e7e7ff;
-  color: #6b4eff;
+.active.dark {
+  background-color: #353942;
+  color: #947eff;
 }
 ::-webkit-scrollbar {
   display: none;

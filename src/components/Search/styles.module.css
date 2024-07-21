@@ -5,8 +5,17 @@
   gap: 12px;
 }
 .input {
+  outline: none;
   width: 100%;
   padding: 10px 16px;
-  border: 1px solid #f2f3f5;
+  border: 2px solid #f2f3f5;
   border-radius: 10px;
+}
+.search.dark,
+.input.dark {
+  background-color: #23272f;
+  color: white;
+}
+.input.dark {
+  border-color: #353942;
 }

@@ -1,6 +1,7 @@
 import { ForwardedRef, forwardRef } from "react";
 import styles from "./styles.module.css";
 import { CategoryTypes } from "../../interfaces";
+import { useTheme } from "../../context/ThemeContext";
 
 interface Props {
   categories: CategoryTypes[];
@@ -12,11 +13,14 @@ export const Categories = forwardRef(
     { categories, setSelectedCategory, selectedCategoty }: Props,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
+    const { isDark } = useTheme();
     return (
-      <div ref={ref} className={styles.categories}>
+      <div ref={ref} className={`${styles.categories}`}>
         <button
           onClick={() => setSelectedCategory(null)}
-          className={!selectedCategoty ? styles.active : styles.item}
+          className={`${!selectedCategoty ? styles.active : styles.item} ${
+            isDark ? styles.dark : styles.light
+          }`}
         >
           all
         </button>
@@ -24,9 +28,9 @@ export const Categories = forwardRef(
           return (
             <button
               onClick={() => setSelectedCategory(category)}
-              className={
+              className={`${
                 selectedCategoty === category ? styles.active : styles.item
-              }
+              } ${isDark ? styles.dark : styles.light}`}
               key={category}
             >
               {category}
