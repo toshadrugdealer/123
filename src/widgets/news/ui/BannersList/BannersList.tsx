@@ -18,6 +18,6 @@ function BannersList({ banners }: Props) {
 export const BannersListWithSkeleton = withSkeleton<Props>(
   BannersList,
   "banner",
-  10,
+  12,
   "row"
 );
