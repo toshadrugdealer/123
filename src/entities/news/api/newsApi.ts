@@ -37,12 +37,14 @@ export const newsApi = createApi({
         dispatch(setNews(data.news));
       },
     }),
-    getLatestNews: builder.query<NewsApiResponse, null>({
-      query: () => {
+    getLatestNews: builder.query<NewsApiResponse, ParamsType>({
+      query: (params) => {
+        const { page_size = 12 } = params || {};
         return {
           url: "latest-news",
           params: {
             apiKey: API_KEY,
+            page_size,
           },
         };
       },
