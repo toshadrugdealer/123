@@ -8,6 +8,9 @@
   white-space: nowrap;
   scrollbar-width: none;
 }
+.item {
+  cursor: pointer;
+}
 .item.light,
 .active.light {
   display: flex;
