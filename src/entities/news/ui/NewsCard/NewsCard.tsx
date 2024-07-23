@@ -4,12 +4,14 @@ import { INews } from "../../modal/types";
 import { useTheme } from "../../../../app/providers/ThemeProvider";
 import noLogo from "../../../../shared/assets/noLogo.png";
 import { Image } from "../../../../shared/ui/Image/Image";
+import { ReactNode } from "react";
 
 interface Props {
   item: INews;
   type: "banner" | "item";
+  viewNewsSlot?: (news: INews) => ReactNode;
 }
-export function NewsCard({ item, type = "item" }: Props) {
+export function NewsCard({ item, type = "item", viewNewsSlot }: Props) {
   const { isDark } = useTheme();
   return (
     <li className={`${styles.card} ${type === "banner" && styles.banner}`}>
@@ -31,6 +33,7 @@ export function NewsCard({ item, type = "item" }: Props) {
           {formatDateAgo(item.published)} by {item.author}
         </p>
       </div>
+      {viewNewsSlot ? viewNewsSlot(item) : null}
     </li>
   );
 }
